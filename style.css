@@ -6,10 +6,9 @@
     width: 300px;
     vertical-align: middle;
 }
-#vdf {
-    display: table-cell;
-    height: 300px;
-    text-align: center;
-    width: 300px;
+#vh {
+    position: absolute;
+    top: 50%;
+    width: 100%;
     vertical-align: middle;
 }
