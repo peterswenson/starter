@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technological.Garden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        /* Add this to your existing styles */
+        #dark-logo, #light-logo {
+            transition: opacity 0.3s ease;
+        }
+        
+        #dark-logo.hidden, #light-logo.hidden {
+            display: none;
+        }
+    
+        [data-theme="dark"] #dark-logo {
+            display: none;
+        }
+    
+        [data-theme="dark"] #light-logo {
+            display: block;
+        }
+    </style>
+    <style>
+
+        .project-card {
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Theme Transitions */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light Theme (default) */
+        :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --accent: #059669;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --accent: #34d399;
+    --card-bg: #1f2937;
+    --card-border: #374151;
+}
+
+body, .project-card, button, span {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+.project-card, button {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+h3, h2 {
+    color: var(--accent);
+}
+
+p, span {
+    color: var(--text-secondary);
+}
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-200 w-8 h-8 bg-gray-200 dark:bg-gray-700">
+            <!-- Dark logo -->
+            <img src="./images/white-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-dark w-6 h-6 object-contain" id="dark-logo">
+            <!-- Light logo -->
+            <img src="./images/Black-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-light w-6 h-6 object-contain" id="light-logo">
+        </button>
+    </div>
+
+    <!-- Hero Section-->
+    <header class="container mx-auto px-4 py-16 text-center">
+        <img src="./images/TGlogoLight.png" alt="Technological.Garden Dark Logo" 
+             class="mx-auto mb-4 w-[600px] h-[200px] object-contain" id="header-dark-logo">
+        <img src="./images/TGlogoDark.png" alt="Technological.Garden Light Logo" 
+             class="mx-auto mb-4 w-[600px] h-[200px] object-contain hidden" id="header-light-logo">
+        <h2 class="text-2xl mb-8" style="color: var(--accent);"></h2>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Current Projects</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- AI Voice Chat Buddy -->
+            <div class="project-card rounded-lg p-6 shadow-lg border"
+                 style="background-color: var(--card-bg); border-color: var(--card-border);">
+                <h3 class="text-xl font-bold mb-4" style="color: var(--accent);">AI Voice Chat Buddy</h3>
+                <p class="mb-4" style="color: var(--text-secondary);">A personal AI companion that lives on your PC, offering conversation and assistance through voice interaction.</p>
+                <div class="flex items-center space-x-2">
+                    <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">AI</span>
+                    <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Voice Processing</span>
+                </div>
+            </div>
+
+            <!-- Generational Starship Game -->
+            <div class="project-card rounded-lg p-6 shadow-lg border relative overflow-hidden"
+            style="border-color: var(--card-border);">
+           <div class="absolute inset-0 z-0"
+                style="background-image: url('./images/technologica_last_sunrise_seen_from_Earth_massive_generation_sh_973b1826-c5b5-4a17-b406-9ec2f51ddcf6.png');
+                       background-size: cover;
+                       background-position: center;
+                       background-repeat: no-repeat;
+                       opacity: 0.3;">
+           </div>
+           <div class="relative z-10">
+               <h3 class="text-xl font-bold mb-4" style="color: var(--accent);">Generational Starship Management</h3>
+               <p class="mb-4" style="color: var(--text-secondary);">A game where you manage the complex systems and social dynamics of a multi-generational space voyage.</p>
+               <div class="flex items-center space-x-2">
+                   <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Game Dev</span>
+                   <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Sci-Fi</span>
+               </div>
+           </div>
+       </div>
+
+    <!-- Writing Section -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="rounded-lg p-6 shadow-lg border"
+             style="background-color: var(--card-bg); border-color: var(--card-border);">
+            <h2 class="text-2xl font-bold mb-4">Upcoming Book Project</h2>
+            <p style="color: var(--text-secondary);">Currently in planning phase. More details coming soon...</p>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">Connect</h2>
+        <div class="flex justify-center space-x-6">
+            <a href="https://discord.gg/JVmdMpzKbv" class="project-card p-4 rounded-lg border"
+               style="background-color: var(--card-bg); border-color: var(--card-border);">
+                <img src="./images/discord.svg" alt="Discord Icon" class="w-6 h-6 mb-2">
+                <span>Swedish Discord</span>
+            </a>
+            <a href="https://x.com/TechnologicDuck" class="project-card p-4 rounded-lg border"
+               style="background-color: var(--card-bg); border-color: var(--card-border);">
+                <img src="./images/alpha-x-circle.svg" alt="X Icon" class="w-6 h-6 mb-2">
+                <span>X (Twitter)</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="text-center py-8" style="color: var(--text-secondary);">
+        <p>© 2024 Technological.Garden - Cultivating Digital Innovation</p>
+    </footer>
+
+    <script>
+    const themeToggle = document.getElementById('theme-toggle');
+const darkLogo = document.getElementById('dark-logo');
+const lightLogo = document.getElementById('light-logo');
+const headerDarkLogo = document.getElementById('header-dark-logo');
+const headerLightLogo = document.getElementById('header-light-logo');
+
+// Initial state setup - show dark logos by default
+darkLogo.classList.remove('hidden');
+lightLogo.classList.add('hidden');
+headerDarkLogo.classList.remove('hidden');
+headerLightLogo.classList.add('hidden');
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        // Switching to light theme
+        document.documentElement.removeAttribute('data-theme');
+        darkLogo.classList.remove('hidden');
+        lightLogo.classList.add('hidden');
+        headerDarkLogo.classList.remove('hidden');
+        headerLightLogo.classList.add('hidden');
+    } else {
+        // Switching to dark theme
+        document.documentElement.setAttribute('data-theme', 'dark');
+        darkLogo.classList.add('hidden');
+        lightLogo.classList.remove('hidden');
+        headerDarkLogo.classList.add('hidden');
+        headerLightLogo.classList.remove('hidden');
+    }
+});
+    </script>
+</body>
+</html>

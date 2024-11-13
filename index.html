@@ -1,18 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="x-icon" href="favicon.ico">
+    <title>Welcome to Technological.Garden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        /* Animations */
+        .logo-container {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
 
-    <title>Technological Garden</title>
+        .bounce-arrow {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Theme system */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Logo visibility */
+        .logo-light {
+            display: none;
+        }
+
+        .logo-dark {
+            display: block;
+        }
+
+        [data-theme="dark"] .logo-light {
+            display: block !important;
+        }
+
+        [data-theme="dark"] .logo-dark {
+            display: none !important;
+        }
+    </style>
 </head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <!-- Main Logo Container -->
+        <a href="main.html" class="logo-container group relative max-w-[600px] w-full">
+            <!-- Light theme logo -->
+            <img src="./images/TGlogoDark.png" alt="Technological.Garden Logo" class="mb-4 logo-light w-full max-w-[600px] h-auto object-contain">
+            <!-- Dark theme logo -->
+            <img src="./images/TGlogoLight.png" alt="Technological.Garden Logo" class="mb-4 logo-dark w-full max-w-[600px] h-auto object-contain">
+            
+            <p class="text-lg text-gray-600 text-center dark:text-gray-300">Project Growth</p>
+            
+            <!-- Subtle "Click to Enter" indicator -->
+            <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                <p class="text-sm text-gray-400 pulse dark:text-gray-500">Click to Enter</p>
+                <svg class="w-6 h-6 text-gray-400 bounce-arrow mt-2 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </a>
+    </div>
 
-<body>
-    <img src="img/TGlogo.png" alt="TG logotype center" class="center" />
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-200 w-8 h-8 bg-gray-200 dark:bg-gray-700">
+            <!-- Dark logo -->
+            <img src="./images/Black-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-dark w-6 h-6 object-contain" id="dark-logo">
+            <!-- Light logo -->
+            <img src="./images/white-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-light w-6 h-6 object-contain" id="light-logo">
+        </button>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkLogo = document.getElementById('dark-logo');
+        const lightLogo = document.getElementById('light-logo');
+
+        // Debug function
+        function logThemeState() {
+            console.log('Current theme:', document.documentElement.getAttribute('data-theme'));
+            console.log('Dark logo display:', window.getComputedStyle(darkLogo).display);
+            console.log('Light logo display:', window.getComputedStyle(lightLogo).display);
+            console.log('Body background:', window.getComputedStyle(document.body).backgroundColor);
+        }
+
+        // Set initial theme based on user preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.body.classList.add('dark');
+        }
+
+        // Log initial state
+        logThemeState();
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                document.body.classList.remove('dark');
+                console.log('Switching to light theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.classList.add('dark');
+                console.log('Switching to dark theme');
+            }
+            
+            // Log state after change
+            setTimeout(logThemeState, 100);
+        });
+    </script>
 </body>
-
 </html>
