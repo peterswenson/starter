@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether - AI Voice Chat Buddy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        /* Theme Transitions */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #dark-logo, #light-logo {
+            transition: opacity 0.3s ease;
+        }
+        
+        #dark-logo.hidden, #light-logo.hidden {
+            display: none;
+        }
+    
+        [data-theme="dark"] #dark-logo {
+            display: none;
+        }
+    
+        [data-theme="dark"] #light-logo {
+            display: block;
+        }
+
+        /* Light Theme (default) */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --accent: #059669;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --accent: #34d399;
+            --card-bg: #1f2937;
+            --card-border: #374151;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1, h2, h3 {
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+        .wave-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bg-secondary) 0px,
+                var(--bg-secondary) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-pattern"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-200 w-8 h-8 bg-gray-200 dark:bg-gray-700">
+            <!-- Dark logo -->
+            <img src="./images/white-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-dark w-6 h-6 object-contain" id="dark-logo">
+            <!-- Light logo -->
+            <img src="./images/Black-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-light w-6 h-6 object-contain" id="light-logo">
+        </button>
+    </div>
+    
+    <div class="relative z-10">
+        <div class="container mx-auto px-4 py-16">
+            <a href="main.html" class="text-accent hover:opacity-80 mb-8 inline-block">← Back to Main</a>
+            
+            <h1 class="text-5xl font-bold mb-4 text-center">Aether</h1>
+            <p class="text-xl text-center mb-12">Your Personal AI Voice Companion</p>
+            
+            <div class="max-w-4xl mx-auto feature-card p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-6">About Aether</h2>
+                <p class="mb-8 text-lg leading-relaxed">
+                    Aether is more than just an AI assistant - it's a companion that lives on your PC, 
+                    understanding and responding to your voice with natural conversation. Using advanced 
+                    AI models and voice processing technology, Aether creates a seamless and intuitive 
+                    interaction experience.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Natural Conversation</h3>
+                        <p>Engage in fluid, context-aware conversations that feel natural and meaningful.</p>
+                    </div>
+                    
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Voice Recognition</h3>
+                        <p>Advanced voice processing for accurate speech recognition and natural responses.</p>
+                    </div>
+                    
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Personalized Learning</h3>
+                        <p>Adapts to your communication style and preferences over time.</p>
+                    </div>
+                    
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Task Assistance</h3>
+                        <p>Help with scheduling, reminders, information lookup, and more.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-4">Development Status</h2>
+                    <p class="text-lg">
+                        Currently in active development, focusing on enhancing natural language processing 
+                        capabilities and voice interaction quality. Early access program coming soon.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkLogo = document.getElementById('dark-logo');
+        const lightLogo = document.getElementById('light-logo');
+
+        // Function to set theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                darkLogo.classList.add('hidden');
+                lightLogo.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                darkLogo.classList.remove('hidden');
+                lightLogo.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme !== 'dark');
+        });
+    </script>
+</body>
+</html>

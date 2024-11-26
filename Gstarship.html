@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generational Starship Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        /* Theme Transitions */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #dark-logo, #light-logo {
+            transition: opacity 0.3s ease;
+        }
+        
+        #dark-logo.hidden, #light-logo.hidden {
+            display: none;
+        }
+    
+        [data-theme="dark"] #dark-logo {
+            display: none;
+        }
+    
+        [data-theme="dark"] #light-logo {
+            display: block;
+        }
+
+        /* Light Theme (default) */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --accent: #059669;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+            --overlay-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --accent: #34d399;
+            --card-bg: #1f2937;
+            --card-border: #374151;
+            --overlay-bg: rgba(0, 0, 0, 0.8);
+        }
+
+        body {
+            background-image: url('./images/technologica_last_sunrise_seen_from_Earth_massive_generation_sh_973b1826-c5b5-4a17-b406-9ec2f51ddcf6.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+        }
+
+        .content-overlay {
+            background-color: var(--overlay-bg);
+            min-height: 100vh;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1, h2, h3 {
+            color: var(--accent);
+        }
+
+        p, li {
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            color: var(--accent);
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-200 w-8 h-8 bg-gray-200 dark:bg-gray-700">
+            <!-- Dark logo -->
+            <img src="./images/white-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-dark w-6 h-6 object-contain" id="dark-logo">
+            <!-- Light logo -->
+            <img src="./images/Black-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-light w-6 h-6 object-contain" id="light-logo">
+        </button>
+    </div>
+
+    <div class="content-overlay">
+        <div class="container mx-auto px-4 py-16">
+            <a href="main.html" class="back-link mb-8 inline-block">← Back to Main</a>
+            
+            <h1 class="text-4xl font-bold mb-8 text-center">Generational Starship Management</h1>
+            
+            <div class="max-w-3xl mx-auto feature-card p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">About the Project</h2>
+                <p class="mb-6">
+                    A complex management simulation game where players oversee the journey of humanity's first 
+                    interstellar colony ship. Navigate the challenges of maintaining ship systems, managing resources, 
+                    and ensuring the survival and prosperity of multiple generations of crew members.
+                </p>
+                
+                <h2 class="text-2xl font-bold mb-4">Key Features</h2>
+                <ul class="list-disc list-inside mb-6">
+                    <li>Multi-generational crew management</li>
+                    <li>Complex ship systems simulation</li>
+                    <li>Resource management and allocation</li>
+                    <li>Social dynamics and population growth</li>
+                    <li>Scientific research and technological advancement</li>
+                    <li>Crisis management and decision making</li>
+                </ul>
+                
+                <div class="feature-card p-6 rounded-lg shadow mt-8">
+                    <h2 class="text-2xl font-bold mb-4">Development Status</h2>
+                    <p>
+                        Currently in early development. Stay tuned for updates and announcements about development 
+                        milestones and eventual release dates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkLogo = document.getElementById('dark-logo');
+        const lightLogo = document.getElementById('light-logo');
+
+        // Function to set theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                darkLogo.classList.add('hidden');
+                lightLogo.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                darkLogo.classList.remove('hidden');
+                lightLogo.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme !== 'dark');
+        });
+    </script>
+</body>
+</html>

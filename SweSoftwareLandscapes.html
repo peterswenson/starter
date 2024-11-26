@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Software Landscapes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        /* Theme Transitions */
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #dark-logo, #light-logo {
+            transition: opacity 0.3s ease;
+        }
+        
+        #dark-logo.hidden, #light-logo.hidden {
+            display: none;
+        }
+    
+        [data-theme="dark"] #dark-logo {
+            display: none;
+        }
+    
+        [data-theme="dark"] #light-logo {
+            display: block;
+        }
+
+        /* Light Theme (default) */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --accent: #059669;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --accent: #34d399;
+            --card-bg: #1f2937;
+            --card-border: #374151;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-color: var(--card-border);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1, h2, h3 {
+            color: var(--accent);
+        }
+
+        p, li {
+            color: var(--text-secondary);
+        }
+
+        .nordic-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, var(--bg-secondary) 25%, transparent 25%),
+                linear-gradient(150deg, var(--bg-secondary) 25%, transparent 25%),
+                linear-gradient(30deg, transparent 75%, var(--bg-secondary) 75%),
+                linear-gradient(150deg, transparent 75%, var(--bg-secondary) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 0, 30px 30px, 30px 30px;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nordic-pattern"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-200 w-8 h-8 bg-gray-200 dark:bg-gray-700">
+            <!-- Dark logo -->
+            <img src="./images/white-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-dark w-6 h-6 object-contain" id="dark-logo">
+            <!-- Light logo -->
+            <img src="./images/Black-theme-50.png" alt="Roller Theme icon" 
+                 class="logo-light w-6 h-6 object-contain" id="light-logo">
+        </button>
+    </div>
+    
+    <div class="relative z-10">
+        <div class="container mx-auto px-4 py-16">
+            <a href="main.html" class="text-accent hover:opacity-80 mb-8 inline-block">← Back to Main</a>
+            
+            <h1 class="text-5xl font-bold mb-4 text-center">Swedish Software Landscapes</h1>
+            <p class="text-xl text-center mb-12">A Journey Through Sweden's Digital Evolution</p>
+            
+            <div class="max-w-4xl mx-auto content-card p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-6">About the Book</h2>
+                <p class="mb-8 text-lg leading-relaxed">
+                    An in-depth exploration of Sweden's unique software industry landscape, from its historical 
+                    roots to its current position as a global tech hub. This book uncovers the factors that 
+                    have shaped Sweden's exceptional tech ecosystem and the cultural elements that continue 
+                    to drive innovation.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="content-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Historical Foundation</h3>
+                        <p>Early technological adoption, educational priorities, and infrastructure development that set the stage for success.</p>
+                    </div>
+                    
+                    <div class="content-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Innovation Culture</h3>
+                        <p>The unique Swedish approach to innovation, collaboration, and problem-solving in software development.</p>
+                    </div>
+                    
+                    <div class="content-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Success Stories</h3>
+                        <p>Case studies of notable Swedish software companies and their impact on global technology.</p>
+                    </div>
+                    
+                    <div class="content-card p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-bold mb-3">Future Outlook</h3>
+                        <p>Emerging trends and the future direction of Sweden's software industry.</p>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl font-bold mb-4">Key Topics</h2>
+                <ul class="list-disc list-inside space-y-2 mb-8">
+                    <li>The evolution of Sweden's tech education system</li>
+                    <li>Impact of social values on software development practices</li>
+                    <li>Stockholm's rise as Europe's startup capital</li>
+                    <li>Open source contributions and community involvement</li>
+                    <li>Work culture and its influence on software development</li>
+                    <li>Government policies and tech industry support</li>
+                </ul>
+                
+                <div class="content-card p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-4">Publication Status</h2>
+                    <p class="text-lg">
+                        Currently in research and writing phase. The book aims to provide valuable insights 
+                        for technology professionals, business leaders, and anyone interested in understanding 
+                        the unique characteristics of Sweden's software industry.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkLogo = document.getElementById('dark-logo');
+        const lightLogo = document.getElementById('light-logo');
+
+        // Function to set theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                darkLogo.classList.add('hidden');
+                lightLogo.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                darkLogo.classList.remove('hidden');
+                lightLogo.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme !== 'dark');
+        });
+    </script>
+</body>
+</html>

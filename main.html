@@ -105,19 +105,19 @@ p, span {
         <h2 class="text-3xl font-bold mb-8 text-center">Current Projects</h2>
         <div class="grid md:grid-cols-2 gap-8">
             <!-- AI Voice Chat Buddy -->
-            <div class="project-card rounded-lg p-6 shadow-lg border"
-                 style="background-color: var(--card-bg); border-color: var(--card-border);">
+            <a href="Aether.html" class="project-card rounded-lg p-6 shadow-lg border"
+                 style="background-color: var(--card-bg); border-color: var(--card-border); text-decoration: none;">
                 <h3 class="text-xl font-bold mb-4" style="color: var(--accent);">AI Voice Chat Buddy</h3>
                 <p class="mb-4" style="color: var(--text-secondary);">A personal AI companion that lives on your PC, offering conversation and assistance through voice interaction.</p>
                 <div class="flex items-center space-x-2">
                     <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">AI</span>
                     <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Voice Processing</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Generational Starship Game -->
-            <div class="project-card rounded-lg p-6 shadow-lg border relative overflow-hidden"
-            style="border-color: var(--card-border);">
+            <a href="Gstarship.html" class="project-card rounded-lg p-6 shadow-lg border relative overflow-hidden"
+            style="border-color: var(--card-border); text-decoration: none;">
            <div class="absolute inset-0 z-0"
                 style="background-image: url('./images/technologica_last_sunrise_seen_from_Earth_massive_generation_sh_973b1826-c5b5-4a17-b406-9ec2f51ddcf6.png');
                        background-size: cover;
@@ -133,15 +133,19 @@ p, span {
                    <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Sci-Fi</span>
                </div>
            </div>
-       </div>
+       </a>
 
     <!-- Writing Section -->
     <section class="container mx-auto px-4 py-12">
-        <div class="rounded-lg p-6 shadow-lg border"
-             style="background-color: var(--card-bg); border-color: var(--card-border);">
-            <h2 class="text-2xl font-bold mb-4">Upcoming Book Project</h2>
-            <p style="color: var(--text-secondary);">Currently in planning phase. More details coming soon...</p>
-        </div>
+        <a href="SweSoftwareLandscapes.html" class="rounded-lg p-6 shadow-lg border block"
+             style="background-color: var(--card-bg); border-color: var(--card-border); text-decoration: none;">
+            <h2 class="text-2xl font-bold mb-4">Swedish Software Landscapes</h2>
+            <p style="color: var(--text-secondary);">An exploration of Sweden's software industry - its history, evolution, and unique characteristics that shaped its success.</p>
+            <div class="flex items-center space-x-2 mt-4">
+                <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Tech History</span>
+                <span class="px-3 py-1 rounded-full text-sm" style="background-color: var(--bg-secondary);">Swedish Industry</span>
+            </div>
+        </a>
     </section>
 
     <!-- Community Section -->
@@ -167,36 +171,43 @@ p, span {
 
     <script>
     const themeToggle = document.getElementById('theme-toggle');
-const darkLogo = document.getElementById('dark-logo');
-const lightLogo = document.getElementById('light-logo');
-const headerDarkLogo = document.getElementById('header-dark-logo');
-const headerLightLogo = document.getElementById('header-light-logo');
+    const darkLogo = document.getElementById('dark-logo');
+    const lightLogo = document.getElementById('light-logo');
+    const headerDarkLogo = document.getElementById('header-dark-logo');
+    const headerLightLogo = document.getElementById('header-light-logo');
 
-// Initial state setup - show dark logos by default
-darkLogo.classList.remove('hidden');
-lightLogo.classList.add('hidden');
-headerDarkLogo.classList.remove('hidden');
-headerLightLogo.classList.add('hidden');
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    
-    if (currentTheme === 'dark') {
-        // Switching to light theme
-        document.documentElement.removeAttribute('data-theme');
-        darkLogo.classList.remove('hidden');
-        lightLogo.classList.add('hidden');
-        headerDarkLogo.classList.remove('hidden');
-        headerLightLogo.classList.add('hidden');
-    } else {
-        // Switching to dark theme
-        document.documentElement.setAttribute('data-theme', 'dark');
-        darkLogo.classList.add('hidden');
-        lightLogo.classList.remove('hidden');
-        headerDarkLogo.classList.add('hidden');
-        headerLightLogo.classList.remove('hidden');
+    // Function to set theme
+    function setTheme(isDark) {
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            darkLogo.classList.add('hidden');
+            lightLogo.classList.remove('hidden');
+            headerDarkLogo.classList.add('hidden');
+            headerLightLogo.classList.remove('hidden');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            darkLogo.classList.remove('hidden');
+            lightLogo.classList.add('hidden');
+            headerDarkLogo.classList.remove('hidden');
+            headerLightLogo.classList.add('hidden');
+            localStorage.setItem('theme', 'light');
+        }
     }
-});
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme !== 'dark');
+    });
     </script>
 </body>
 </html>
