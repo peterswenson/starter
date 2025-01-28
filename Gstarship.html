@@ -11,6 +11,97 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                var(--overlay-bg) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Tilt-shift Effect Cards */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 
+                0 -15px 15px -15px rgba(0,0,0,0.3) inset,
+                0 15px 15px -15px rgba(0,0,0,0.3) inset;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0,0,0,0.2),
+                0 10px 10px -5px rgba(0,0,0,0.1);
+        }
+
+        .depth-card {
+            transition: transform 0.3s ease;
+        }
+
+        .depth-card:hover {
+            transform: rotateX(8deg) translateY(-5px);
+        }
+
+        /* Depth Effect */
+        .depth-section {
+            perspective: 1000px;
+        }
+
+        .depth-card {
+            transform: rotateX(5deg);
+            transform-style: preserve-3d;
+            box-shadow: 
+                0 10px 30px -5px rgba(0,0,0,0.2),
+                0 5px 15px -5px rgba(0,0,0,0.1);
+        }
+
         #dark-logo, #light-logo {
             transition: opacity 0.3s ease;
         }
@@ -108,32 +199,97 @@
         <div class="container mx-auto px-4 py-16">
             <a href="main.html" class="back-link mb-8 inline-block">← Back to Main</a>
             
-            <h1 class="text-4xl font-bold mb-8 text-center">Generational Starship Management</h1>
-            
-            <div class="max-w-3xl mx-auto feature-card p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold mb-4">About the Project</h2>
-                <p class="mb-6">
-                    A complex management simulation game where players oversee the journey of humanity's first 
-                    interstellar colony ship. Navigate the challenges of maintaining ship systems, managing resources, 
-                    and ensuring the survival and prosperity of multiple generations of crew members.
-                </p>
-                
-                <h2 class="text-2xl font-bold mb-4">Key Features</h2>
-                <ul class="list-disc list-inside mb-6">
-                    <li>Multi-generational crew management</li>
-                    <li>Complex ship systems simulation</li>
-                    <li>Resource management and allocation</li>
-                    <li>Social dynamics and population growth</li>
-                    <li>Scientific research and technological advancement</li>
-                    <li>Crisis management and decision making</li>
-                </ul>
-                
-                <div class="feature-card p-6 rounded-lg shadow mt-8">
-                    <h2 class="text-2xl font-bold mb-4">Development Status</h2>
-                    <p>
-                        Currently in early development. Stay tuned for updates and announcements about development 
-                        milestones and eventual release dates.
+            <div class="hero-section mb-12">
+                <div class="hero-content">
+                    <h1 class="text-5xl font-bold mb-6 text-center text-white">Generational Starship Management</h1>
+                    <p class="text-xl mb-8 text-gray-200 max-w-3xl mx-auto">
+                        Experience a mesmerizing miniature universe where your starship comes to life like an intricate model world. Through stunning tilt-shift visuals, watch your civilization unfold as if viewing a masterfully crafted diorama floating through the cosmos.
                     </p>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto depth-section">
+                <div class="feature-card p-8 rounded-lg shadow-lg mb-8 depth-card">
+                    <h2 class="text-2xl font-bold mb-4">A Living Model Universe</h2>
+                    <p class="mb-6">
+                        Step into the role of an AI observer guiding a generational ship's society through strategic environmental control and infrastructure management. Watch as your decisions ripple through this meticulously detailed miniature world, where every deck and corridor appears as part of an elaborate model brought to life. This unique simulation emphasizes pattern recognition and systemic thinking over direct control, challenging you to shape the destiny of humanity's interstellar journey while admiring the intricate details of your ship's ecosystem.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h2 class="text-xl font-bold mb-4">Time Structure</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Real-time operational management with pause controls</li>
+                            <li>15-30 minute episodes representing months of ship time</li>
+                            <li>Generational transitions marking 20-25 years of progress</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card p-6 rounded-lg shadow depth-card">
+                        <h2 class="text-xl font-bold mb-4">Stunning Visual Design</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Mesmerizing tilt-shift effect creating a model world aesthetic</li>
+                            <li>Physical ship structure with dynamic depth perspective</li>
+                            <li>Intricate environmental systems with particle flow visualization</li>
+                            <li>Detailed miniature crew members going about their daily lives</li>
+                            <li>Rich color palette with atmospheric lighting effects</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg shadow-lg mb-8 depth-card">
+                    <h2 class="text-2xl font-bold mb-4">Core Gameplay Loop</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">1. Pattern Observation</h3>
+                            <ul class="list-disc list-inside">
+                                <li>Monitor conditions</li>
+                                <li>Track behaviors</li>
+                                <li>Analyze flows</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">2. Strategic Adjustment</h3>
+                            <ul class="list-disc list-inside">
+                                <li>Modify controls</li>
+                                <li>Adjust priorities</li>
+                                <li>Shape development</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">3. Impact Analysis</h3>
+                            <ul class="list-disc list-inside">
+                                <li>Observe responses</li>
+                                <li>Track changes</li>
+                                <li>Evaluate shifts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="feature-card p-6 rounded-lg shadow depth-card">
+                        <h2 class="text-xl font-bold mb-4">Visual Design Principles</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Tilt-shift depth of field focusing attention</li>
+                            <li>Miniature-style proportions and details</li>
+                            <li>Dynamic camera perspectives</li>
+                            <li>Atmospheric lighting and particle effects</li>
+                            <li>Seamless blend of function and aesthetics</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card p-6 rounded-lg shadow">
+                        <h2 class="text-xl font-bold mb-4">Technical Requirements</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Windows 10</li>
+                            <li>DirectX 11</li>
+                            <li>Intel i5 or equivalent</li>
+                            <li>8GB RAM</li>
+                            <li>10GB storage</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
